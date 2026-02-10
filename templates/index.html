@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PYQ Question Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>📘 PYQ Question Generator</h1>
+
+    <form method="POST">
+        <label>Subject</label>
+        <input type="text" name="subject" placeholder="DBMS, OS, CN" required>
+
+        <label>Enter your query</label>
+        <textarea name="query" rows="4" placeholder="Give me all questions related to Normalization" required></textarea>
+
+        <button type="submit">Generate</button>
+    </form>
+
+    {% if response %}
+    <div class="output">
+        <pre>{{ response }}</pre>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
