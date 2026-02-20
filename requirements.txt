@@ -1,10 +1,13 @@
 langchain
+python==3.11
+transformers==4.41.2
+tokenizers==0.19.1
 langchain-core
 langchain-community
 langchain_text_splitters
 pypdf
 pymupdf
-transformers==4.36.2
+
 huggingface_hub==0.19.4
 sentence-transformers==2.2.2
 faiss-cpu==1.13.2
