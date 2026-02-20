@@ -11,14 +11,15 @@ from vector_store import VectorStore
 from embedding_manager import EmbeddingManager
 
 
-
+import os
 # ------------------ LLM ------------------
 from flask import send_file,session
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Preformatted
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import getSampleStyleSheet
 import io
-
+from dotenv import load_dotenv
+load_dotenv()
 app = Flask(__name__)
 app.secret_key = "b3619bf36809d94d647846c9a2bbbc0deab2931be00f164a5d5d7da131240c56"
 # ------------------ PDF DOWNLOAD ROUTE ------------------
@@ -53,7 +54,7 @@ def download_pdf():
 
 
 llm = ChatGroq(
-    groq_api_key="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",
+    api_key = os.getenv("GROQ_API_KEY"),
     model_name="llama-3.1-8b-instant",
     temperature=0.3,
     max_tokens=1200
