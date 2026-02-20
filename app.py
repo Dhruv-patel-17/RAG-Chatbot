@@ -21,7 +21,7 @@ import io
 from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
-app.secret_key = "b3619bf36809d94d647846c9a2bbbc0deab2931be00f164a5d5d7da131240c56"
+app.secret_key =os.getenv("SECRET_KEY")
 # ------------------ PDF DOWNLOAD ROUTE ------------------
 @app.route("/download_pdf")
 def download_pdf():
