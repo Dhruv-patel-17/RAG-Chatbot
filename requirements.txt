@@ -1,5 +1,5 @@
 langchain
-transformers==4.41.2
+
 tokenizers==0.19.1
 langchain-core
 langchain-community
@@ -7,10 +7,13 @@ langchain_text_splitters
 pypdf
 pymupdf
 
-huggingface_hub==0.19.4
-sentence-transformers==2.2.2
+
+
 faiss-cpu==1.13.2
 chromadb
 langchain-groq
 python-dotenv
 flask
+transformers==4.41.2
+huggingface_hub==0.23.4
+sentence-transformers==2.7.0
