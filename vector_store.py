@@ -4,7 +4,6 @@ import os
 import uuid
 import chromadb
 
-
 class VectorStore:
     """Manages document embeddings in a ChromaDB vector store"""
 
@@ -57,8 +56,15 @@ class VectorStore:
 
             texts.append(doc.page_content)
 
+            # 🔹 Include all metadata from ingest (header + paper_id)
             metadata = dict(doc.metadata or {})
             metadata["content_length"] = len(doc.page_content)
+
+            # Ensure required fields exist
+            for key in ["paper_id", "subject", "year", "session", "subject_code", "subject_name"]:
+                if key not in metadata:
+                    metadata[key] = "Unknown"
+
             metadatas.append(metadata)
 
         self.collection.add(

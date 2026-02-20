@@ -1,45 +1,412 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+/* ---------- LOADING SPINNER ---------- */
+
+
+/* -------- ADVANCED AI LOADER -------- */
+
+.ai-loader{
+    margin-top:30px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    border-radius:14px;
+    background:white;
+    border:1px solid #e6eaf2;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    animation:fadeIn .4s ease;
 }
 
-.container {
-    width: 70%;
-    margin: auto;
-    margin-top: 40px;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
+/* shimmer lines */
+.skeleton-line{
+    height:15px;
+    border-radius:6px;
+    margin-bottom:14px;
+    background:linear-gradient(90deg,#eceff1 25%,#dde3ea 37%,#eceff1 63%);
+    background-size:400% 100%;
+    animation:shimmer 1.3s infinite linear;
+    margin-left:auto;
+    margin-right:auto;
 }
 
-h1 {
-    text-align: center;
+@keyframes shimmer{
+    0%{background-position:100% 0}
+    100%{background-position:-100% 0}
 }
 
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
+/* widths */
+.skeleton-line:nth-child(1){width:92%}
+.skeleton-line:nth-child(2){width:86%}
+.skeleton-line:nth-child(3){width:96%}
+.skeleton-line:nth-child(4){width:78%}
+
+/* generating text */
+.loader-text{
+    margin-top:14px;
+    font-size:15px;
+    color:#5c6bc0;
+    font-weight:500;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    text-align:center;
+    white-space:nowrap;
+}
+.loader-text::after{
+    content:"|";
+    margin-left:4px;
+    animation:blinkCursor 1s infinite;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+@keyframes blinkCursor{
+    50%{opacity:0}
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
+/* typing dots */
+.dots span{
+    animation:blink 1.4s infinite;
+}
+.dots span:nth-child(2){animation-delay:.2s}
+.dots span:nth-child(3){animation-delay:.4s}
+
+@keyframes blink{
+    0%,80%,100%{opacity:0}
+    40%{opacity:1}
 }
 
-.output {
-    margin-top: 30px;
-    background: #eee;
-    padding: 20px;
-    white-space: pre-wrap;
+/* progress bar */
+.progress-bar{
+    margin-top:18px;
+    height:6px;
+    border-radius:10px;
+    background:#e8edf7;
+    overflow:hidden;
+    width:80%;
+}
+
+.progress-bar::before{
+    content:"";
+    display:block;
+    height:100%;
+    width:40%;
+    background:linear-gradient(90deg,#43a047,#5c6bc0);
+    animation:loadingBar 1.2s infinite ease-in-out;
+}
+
+@keyframes loadingBar{
+    0%{margin-left:-40%}
+    100%{margin-left:100%}
+}
+/* ---------- SUCCESS CHECKMARK ---------- */
+
+.success-container{
+    margin-top:25px;
+    text-align:center;
+    animation:fadeIn .4s ease;
+}
+
+.checkmark-circle{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    margin:0 auto 12px;
+    background:linear-gradient(135deg,#43a047,#5c6bc0);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    animation:pop .4s ease;
+}
+
+.checkmark{
+    stroke:white;
+    stroke-width:4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:48;
+    stroke-dashoffset:48;
+    animation:draw .6s ease forwards .2s;
+}
+
+/* circle pop */
+@keyframes pop{
+    0%{ transform:scale(.6); opacity:.5 }
+    100%{ transform:scale(1); opacity:1 }
+}
+
+/* tick draw */
+@keyframes draw{
+    to{ stroke-dashoffset:0 }
+}
+
+.success-container p{
+    font-weight:500;
+    color:#2e7d32;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Page Background */
+body{
+    background: linear-gradient(135deg,#e3f2fd,#f5f7fa);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:40px 15px;
+}
+
+/* Main Container */
+.container{
+    transition: transform .25s ease, box-shadow .25s ease;
+    background:white;
+    width:900px;
+    position:relative;
+    max-width:95%;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    animation: fadeIn 0.6s ease;
+}
+.container::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    padding:1px;
+    background:linear-gradient(135deg,#5c6bc0,#43a047);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    pointer-events:none;
+}
+.container:hover{
+    transform: translateY(-2px);
+    box-shadow:0 20px 45px rgba(0,0,0,0.12);
+}
+/* Heading */
+h1{
+    text-align:center;
+    font-size:32px;
+    font-weight:600;
+    margin-bottom:30px;
+    color:#1a237e;
+}
+
+/* Labels */
+label{
+    font-weight:500;
+    display:block;
+    margin-bottom:8px;
+    margin-top:20px;
+    color:#333;
+}
+
+/* Dropdowns */
+select{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #dcdcdc;
+    font-size:15px;
+    transition:0.25s;
+    background:#fafafa;
+    appearance:none;
+}
+
+select:focus{
+    border-color:#5c6bc0;
+    outline:none;
+    box-shadow:0 0 0 2px rgba(92,107,192,0.15);
+}
+
+/* Button */
+button{
+    margin-top:25px;
+    padding:14px 28px;
+    border:none;
+    position:relative;
+    overflow:hidden;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:500;
+    color:white;
+    background:linear-gradient(135deg,#43a047,#66bb6a);
+    cursor:pointer;
+    transition:0.3s;
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+button::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);
+    transform:skewX(-25deg);
+}
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(0,0,0,0.2);
+}
+button:hover::after{
+    animation:shine .8s forwards;
+}
+
+@keyframes shine{
+    100%{ left:130%; }
+}
+button:active{
+    transform:scale(0.98);
+}
+
+.result-box{
+    background:white;
+    border:1px solid #ccc;
+    padding:30px;
+    margin-top:30px;
+    border-radius:12px;
+    font-family:"Times New Roman", serif;
+    line-height:1.8;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+.output pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.result-box pre{
+    white-space:pre-wrap;
+    font-family:"Times New Roman", serif;
+    font-size:16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 320px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-field {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+/* Hover effect */
+.input-field:hover {
+  border-color: #6aa9ff;
+}
+
+/* Focus effect */
+.input-field:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 3px rgba(76,175,80,0.15);
+}
+.output{
+    animation:resultFade .5s ease;
+}
+
+@keyframes resultFade{
+    from{opacity:0; transform:translateY(15px)}
+    to{opacity:1; transform:translateY(0)}
+}
+/* Helper text */
+.hint {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #777;
+}
+/* Animation */
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+/* Download PDF Button — Premium Animated */
+.download-btn{
+    margin-top:25px;
+    padding:14px 30px;
+    border:none;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:600;
+    color:white;
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    letter-spacing:.4px;
+
+    background:linear-gradient(135deg,#43a047,#66bb6a);
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+    transition:all .3s ease;
+}
+
+/* Hover Lift + Glow */
+.download-btn:hover{
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 18px 35px rgba(0,0,0,0.25);
+}
+
+/* Click Press Effect */
+.download-btn:active{
+    transform:scale(.96);
+}
+
+/* Shine Sweep Effect */
+.download-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+    transform:skewX(-25deg);
+}
+
+.download-btn:hover::before{
+    animation:shine 0.9s forwards;
+}
+
+@keyframes shine{
+    100%{ left:130%; }
+}
+
+/* Download Icon Pulse */
+.download-btn::after{
+    content:"⬇";
+    margin-left:10px;
+    display:inline-block;
+    transition:transform .3s ease;
+}
+
+.download-btn:hover::after{
+    transform:translateY(4px);
 }

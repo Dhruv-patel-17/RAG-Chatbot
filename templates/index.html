@@ -1,31 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>PYQ Question Generator</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
+
 <body>
+    <div class="container">
+        <h1>📘 PYQ Question Generator</h1>
 
-<div class="container">
-    <h1>📘 PYQ Question Generator</h1>
+        <form method="POST">
 
-    <form method="POST">
-        <label>Subject</label>
-        <input type="text" name="subject" placeholder="DBMS, OS, CN" required>
+            <!-- Subject -->
+            <label>Subject</label>
+            <select name="subject" required>
+                <option value="">-- Select Subject --</option>
+                <option value="BCE(3110004)">BCE(3110004)</option>
+                <option value="BEE(3110005)">BEE(3110005)</option>
+                <option value="BME(3110006)">BME(3110006)</option>
+            </select>
 
-        <label>Enter your query</label>
-        <textarea name="query" rows="4" placeholder="Give me all questions related to Normalization" required></textarea>
+            <br><br>
 
-        <button type="submit">Generate</button>
-    </form>
 
-    {% if response %}
-    <div class="output">
-        <pre>{{ response }}</pre>
+            <label>Query</label>
+            <select id="query_type" name="query_type" required>
+                <option value="">-- Select Query--</option>
+                <option value="probable">Give me a probable question paper</option>
+                <option value="topic">Give questions related to particular topic</option>
+
+            </select>
+
+            <br><br>
+
+            <!-- Topic Input -->
+            <!-- Topic Input -->
+            <div class="form-group" id="topic_div" style="display:none;">
+                <label for="topic">Enter Topic</label>
+                <input type="text" id="topic" name="topic" class="input-field" placeholder="e.g. Kirchhoff’s Law">
+            </div>
+
+            <!-- Custom Query -->
+            <div id="custom_div" style="display:none;">
+                <label>Enter your custom query</label>
+                <textarea name="custom_query" rows="4" placeholder="Type your custom query here..."></textarea>
+            </div>
+
+            <br>
+
+            <div id="loader" class="ai-loader" style="display:none;">
+
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+                <div class="skeleton-line"></div>
+
+                <div class="loader-text">
+                    <span id="loadingText">Initializing</span>
+                    <div class="dots">
+                        <span>.</span>
+                        <span>.</span>
+                        <span>.</span>
+                    </div>
+                </div>
+
+                <div class="progress-bar"></div>
+            </div>
+            <div id="successCheck" class="success-container" style="display:none;">
+                <div class="checkmark-circle">
+                    <svg viewBox="0 0 52 52">
+                        <path class="checkmark" fill="none" d="M14 27l7 7 17-17" />
+                    </svg>
+                </div>
+                <p>Generated Successfully</p>
+            </div>
+
+            <button type="submit">Generate</button>
+        </form>
+
+        {% if response %}
+        <div class="output">
+            <pre>{{ response }}</pre>
+        </div>
+        {% endif %}
+
+        <button class="download-btn" id="downloadBtn">
+            Download PDF
+        </button>
+
     </div>
-    {% endif %}
-</div>
-
 </body>
+
 </html>
