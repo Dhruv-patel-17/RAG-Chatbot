@@ -17,3 +17,4 @@ flask
 transformers==4.41.2
 huggingface_hub==0.23.4
 sentence-transformers==2.7.0
+gunicorn
