@@ -3,15 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>PYQ Question Generator</title>
+    <title>Question Paper Generator</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script defer src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 
 <body>
+    <div id="ai-welcome">
+        <div class="ai-panel">
+            
+
+            <div class="welcome_header">
+                <img src="{{ url_for('static',filename='img.webp') }}" alt="Question Paper Generator"
+                    class="header_image">
+                <h1>QUESTION PAPER GENERATOR</h1>
+
+            </div>
+
+
+            <div class="ai-scan-line"></div>
+
+            <p class="ai-desc">
+                This platform is designed to help you practice efficiently through paper generated from past question
+                papers
+            </p>
+
+            <button class="ai-enter" onclick="enterPlatform()">
+                Proceed to Dashboard
+            </button>
+        </div>
+    </div>
     <div class="container">
-        <h1>📘 PYQ Question Generator</h1>
+        <div class="form-header">
+            <img src="{{ url_for('static',filename='question_paper_generator.jpeg') }}" alt="Question Paper Generator"
+                class="header-image">
+            <h1>QUESTION PAPER GENERATOR</h1>
+        </div>
 
         <form method="POST">
 
@@ -20,8 +48,14 @@
             <select name="subject" required>
                 <option value="">-- Select Subject --</option>
                 <option value="BCE(3110004)">BCE(3110004)</option>
+                <option value="BE(3110016)">BE(3110016)</option>
                 <option value="BEE(3110005)">BEE(3110005)</option>
                 <option value="BME(3110006)">BME(3110006)</option>
+                <option value="ETC(3130004)">PPS(3130004)</option>
+                <option value="MATHS_1(3110014)">MATHS 1(3110014)</option>
+                <option value="MATHS_2(3110015)">MATHS 2(3110015)</option>
+                <option value="PHYSICS(3110011)">PHYSICS(3110011)</option>
+                <option value="PPS(3110003)">PPS(3110003)</option>
             </select>
 
             <br><br>
@@ -81,6 +115,8 @@
 
             <button type="submit">Generate</button>
         </form>
+
+        <br>
 
         {% if response %}
         <div class="output">

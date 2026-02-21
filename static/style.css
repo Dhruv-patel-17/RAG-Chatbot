@@ -3,8 +3,109 @@
 /* ---------- LOADING SPINNER ---------- */
 
 
-/* -------- ADVANCED AI LOADER -------- */
 
+/* -------- WELCOME SCREEN -------- */
+/* ===== AI PROFESSIONAL WELCOME SCREEN ===== */
+#ai-welcome{
+    position:fixed;
+    inset:0;
+    background: linear-gradient(135deg,#e3f2fd,#f5f7fa);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    animation:fadeIn .7s ease;
+}
+
+/* panel */
+.ai-panel{
+    position:relative;
+    padding:60px 70px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.04);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,0.15);
+    text-align:center;
+    box-shadow:0 0 60px rgba(92,107,192,.25);
+    overflow:hidden;
+}
+
+/* glowing border animation */
+.ai-panel::before{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    border-radius:22px;
+    background:#ffffff;
+    background-size:300% 300%;
+    animation:borderFlow 6s linear infinite;
+    z-index:-1;
+}
+
+@keyframes borderFlow{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* title */
+.ai-title{
+    font-size:36px;
+    font-weight:600;
+    letter-spacing:.5px;
+    color:#090000;
+    margin-bottom:10px;
+}
+
+/* subtitle typing effect */
+
+
+@keyframes typing{
+    to{width:100%}
+}
+@keyframes blink{
+    50%{border-color:transparent}
+}
+
+/* scan line */
+.ai-scan-line{
+    height:2px;
+    width:100%;
+    background:linear-gradient(90deg,transparent,#5c6bc0,#43a047,transparent);
+    margin:25px 0;
+    animation:scanMove 2.5s linear infinite;
+}
+@keyframes scanMove{
+    0%{transform:translateX(-100%)}
+    100%{transform:translateX(100%)}
+}
+
+/* description */
+.ai-desc{
+    color:#050506;
+    font-size:15px;
+    margin-bottom:35px;
+    max-width:480px;
+}
+
+/* enter button */
+.ai-enter{
+    padding:14px 40px;
+    font-size:16px;
+    font-weight:600;
+    border:none;
+    border-radius:14px;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(135deg,#43a047,#66bb6a);
+    box-shadow:0 0 25px rgba(92,107,192,.5);
+    transition:.35s;
+}
+
+.ai-enter:hover{
+    transform:scale(1.06);
+    box-shadow:0 0 40px rgba(92,107,192,.9);
+}
 .ai-loader{
     margin-top:30px;
     padding:28px;
@@ -16,6 +117,15 @@
     border:1px solid #e6eaf2;
     box-shadow:0 8px 25px rgba(0,0,0,0.08);
     animation:fadeIn .4s ease;
+}
+.welcome_header{
+    text-align:center;
+    margin-bottom: 35px;
+}
+.header_image{
+    width: 500px;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 /* shimmer lines */
@@ -199,7 +309,15 @@ h1{
     margin-bottom:30px;
     color:#1a237e;
 }
-
+.form-header{
+    text-align:center;
+    margin-bottom: 35px;
+}
+.header-image{
+    width: 500px;
+    height: auto;
+    margin-bottom: 10px;
+}
 /* Labels */
 label{
     font-weight:500;

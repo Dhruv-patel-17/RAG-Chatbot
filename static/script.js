@@ -9,8 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const loader = document.getElementById("loader");
     const text = document.getElementById("loadingText");
     const success = document.getElementById("successCheck");
+    if (sessionStorage.getItem("entered") === "yes") {
+        const welcome = document.getElementById("ai-welcome");
+        if (welcome) welcome.remove();
+    }
 
+    window.enterPlatform = function () {
+        sessionStorage.setItem("entered", "yes");
 
+        const el = document.getElementById("ai-welcome");
+        el.style.opacity = "0";
+        el.style.pointerEvents = "none";
+
+        setTimeout(() => el.remove(), 600);
+    };
     /* ---------- LOADING STEPS ---------- */
     const steps = [
         "Retrieving context",
