@@ -15,6 +15,8 @@ This project is an Question Paper Generator built using Retrieval-Augmented Gene
 
 ## Problem Statement: 
 Educational institutions and students often face difficulty in creating high-quality question papers that accurately reflect exam patterns, syllabus coverage, and difficulty balance. Traditional paper setting is time-consuming, requires expert effort, and may lack consistency or variety. Additionally, students preparing for exams have limited access to diverse practice papers that mirror real test conditions. Therefore, there is a need for an intelligent system that can automatically generate structured, relevant, and balanced question papers based on analysis of past exam papers, reducing manual workload while improving exam preparation quality
+## RAG Pipeline
+<img width="650" alt="image" src="doc/rag_pipeline.png">
 
 ### Data Ingestion,Data Cleaning and Preprocessing:
 The process begins by collecting past question papers from various sources in formats such as PDF, DOCX, or text. These files are processed using document parsing tools to extract raw textual content, which serves as the foundational dataset for the system.The extracted text is cleaned to remove unwanted elements such as headers, footers, page numbers, and formatting inconsistencies. The content is normalized and structured so that individual questions, marks, sections, and topics can be clearly identified and prepared for further processing.
