@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 app.secret_key =os.getenv("SECRET_KEY")
-# ------------------ PDF DOWNLOAD ROUTE ------------------
+
 @app.route("/download_pdf")
 def download_pdf():
 
@@ -117,6 +117,6 @@ def index():
     return render_template("index.html", response=response)
 
 
-# ------------------ MAIN ------------------
+
 if __name__ == "__main__":
     app.run(debug=True)

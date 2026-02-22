@@ -121,7 +121,7 @@ Requested questions are not available in the provided PYQ context.
 
 import re
 
-# ----------------- HEADER FORMATTING -----------------
+
 def format_header(meta: dict) -> str:
     """
     Formats the exam paper header using metadata from the first chunk.
@@ -153,7 +153,7 @@ def format_header(meta: dict) -> str:
     4. Simple and non-programmable scientific calculators are allowed.
     """
 
-# ----------------- YEAR / SESSION EXTRACTION -----------------
+
 def extract_year_session(query: str):
     year = None
     session = None
@@ -191,11 +191,11 @@ def rag_simple(query, retriever, subject, llm, top_k=10):
     if not results:
         return "Requested questions are not available in the provided PYQ context."
 
-    # 🔹 Extract header from first chunk using format_header
+    #  Extract header from first chunk using format_header
     first_metadata = results[0].get("metadata", {})
     header_text = format_header(first_metadata)
 
-    # 🔹 Build context text including questions
+    #  Build context text including questions
     context_text = header_text + "\n\n" + "\n\n".join(
         doc['content'] for doc in results
     )
