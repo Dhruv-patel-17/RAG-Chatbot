@@ -44,8 +44,8 @@ Finally, the completed question paper is displayed to the user through the inter
 
 * Clone this repository and check the ```requirements.txt```:
     ```shell
-    git clone https://github.com/Dhruv-patel-17/RAG_Chatbot
-    cd RAG_Chatbot
+    git clone https://github.com/Dhruv-patel-17/RAG-Chatbot
+    cd RAG-Chatbot
     pip install -r requirements.txt
     ```
 * Simply run:    
